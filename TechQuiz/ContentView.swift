@@ -4,9 +4,15 @@ struct ContentView: View {
     
     @State var choosenCompany = Companies.allCases.randomElement()
     
-    @State var score: Int = 300 {
+    @State var score: Int = 500 {
         didSet {
             if (score < 0) {score = 0}
+        }
+    }
+    
+    @State var didPlayerFailed: Bool = false {
+        didSet {
+            if (score <= 0) {didPlayerFailed = true}
         }
     }
     
@@ -32,9 +38,11 @@ struct ContentView: View {
         createAlignment()
         
         if (resetAll == true) {
+            lastOne = .wasNothing
+            score = 500
+            didPlayerFailed = false
             wrong = 0
             correct = 0
-            score = 500
             numberOfAttempts = 0
         }
         
@@ -132,17 +140,23 @@ struct ContentView: View {
         
         numberOfAttempts += 1
         
-        if (company != choosenCompany) {score -= 50; wrong += 1}
-        else {score += 50; correct += 1}
+        if (company != choosenCompany)
+        {score -= 50; wrong += 1; lastOne = .wasIncorrect}
+        else {score += 50; correct += 1; lastOne = .wasCorrect}
         
         resetStuff(resetAll: false)
         
     }
     
+    enum lastOneWas: CaseIterable {
+        case wasCorrect
+        case wasIncorrect
+        case wasNothing
+    }
     
+    @State private var lastOne: lastOneWas = .wasNothing
     
     var body: some View {
-        
         
         ZStack {
             
@@ -155,29 +169,46 @@ struct ContentView: View {
                     
                     ZStack {
                         
-                        
-                        Rectangle ()
-                            .foregroundColor(.white)
-                            .frame(width: 450, height: 120, alignment: .top)
-                            .blur(radius: 50)
+                        switch lastOne {
+                        case .wasNothing:
+                            Rectangle ()
+                                .foregroundColor(.white.opacity(0.5))
+                                .frame(width: 450, height: 120, alignment: .top)
+                                .blur(radius: 50)
+                                .animation(.spring())
+                        case .wasCorrect:
+                            Rectangle ()
+                                .foregroundColor(.green.opacity(0.6))
+                                .frame(width: 450, height: 120, alignment: .top)
+                                .blur(radius: 50)
+                                .animation(.spring())
+                        case .wasIncorrect:
+                            Rectangle ()
+                                .foregroundColor(.red.opacity(0.6))
+                                .frame(width: 450, height: 120, alignment: .top)
+                                .blur(radius: 50)
+                                .animation(.spring())
+                        }
                         
                         
                         Image("TECHQUIZ_LOGO")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 162,height: 140)
+                            .animation(.spring())
                         
                         HStack {
                             Text ("\(correct)")
                                 .foregroundColor(.green)
                             
-                            Spacer().frame(width: 240,height: 50)
+                            Spacer().frame(width: 210,height: 50)
                             
                             Text ("\(wrong)")
                                 .foregroundColor(.red)
                         }
-                        .font(.system(size:72).bold())
+                        .font(.system(size:42).bold())
                         .opacity(0.6)
+                        .animation(.easeOut)
                         
                         
                     }
@@ -189,7 +220,7 @@ struct ContentView: View {
                             .frame(width: 315, height: 160)
                             .multilineTextAlignment(.center)
                             .offset(x: 0, y: 150)
-                            .foregroundColor(.white)
+                            .foregroundColor(.orange)
                         
                     } else {
                         Text (generateQuestion(company: choosenCompany!, number: Int.random(in: 1...6)))
@@ -198,6 +229,7 @@ struct ContentView: View {
                             .font(.system(size:25))
                             .foregroundColor(.white)
                             .frame(width: 315, height: 170)
+                            .animation(.easeOut)
                     }
                     
                 } .offset(x: 0, y: -15)
@@ -208,14 +240,16 @@ struct ContentView: View {
                     
                     ForEach (companyAlignment, id: \.self) { option in
                         Button {
+                            
                             buttonSpecificAction(company: option)
+                            
                         } label: {
+                            
                             Image(option.rawValue)
                                 .resizable()
                                 .renderingMode(.template)
                                 .foregroundColor(.black)
                                 .frame(width: 70,height: 70)
-                            
                             
                         }
                     }
@@ -224,10 +258,10 @@ struct ContentView: View {
                     .cornerRadius(15)
                     
                     
-                }
+                } .animation(.spring())
                 
                 Spacer()
-                    .frame(width: 20,height: 120)
+                    .frame(width: 20,height: 15)
                 
                 if (companyAlignment.count == 0) {
                     
@@ -273,11 +307,13 @@ struct ContentView: View {
                             .cornerRadius(50)
                             
                         }
-                    }
+                    }.animation(.spring())
+                    
                     Spacer()
                 }
             }
-        }
+        } .navigationBarBackButtonHidden(true)
+        
     }
 }
 

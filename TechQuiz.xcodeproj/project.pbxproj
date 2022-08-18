@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F12C328128ADBD4600829004 /* AboutGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12C328028ADBD4500829004 /* AboutGame.swift */; };
 		F16FD12028AC0FE500C7C398 /* TechQuizApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16FD11F28AC0FE500C7C398 /* TechQuizApp.swift */; };
 		F16FD12228AC0FE500C7C398 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16FD12128AC0FE500C7C398 /* ContentView.swift */; };
 		F16FD12428AC0FE800C7C398 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F16FD12328AC0FE800C7C398 /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F12C328028ADBD4500829004 /* AboutGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutGame.swift; sourceTree = "<group>"; };
 		F16FD11C28AC0FE500C7C398 /* TechQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TechQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F16FD11F28AC0FE500C7C398 /* TechQuizApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechQuizApp.swift; sourceTree = "<group>"; };
 		F16FD12128AC0FE500C7C398 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 				F16FD12D28AC106D00C7C398 /* StartMenu.swift */,
 				F16FD11F28AC0FE500C7C398 /* TechQuizApp.swift */,
 				F16FD12128AC0FE500C7C398 /* ContentView.swift */,
+				F12C328028ADBD4500829004 /* AboutGame.swift */,
 				F16FD12328AC0FE800C7C398 /* Assets.xcassets */,
 				F16FD12528AC0FE800C7C398 /* Preview Content */,
 			);
@@ -143,6 +146,7 @@
 				F16FD12228AC0FE500C7C398 /* ContentView.swift in Sources */,
 				F16FD12028AC0FE500C7C398 /* TechQuizApp.swift in Sources */,
 				F16FD12E28AC106D00C7C398 /* StartMenu.swift in Sources */,
+				F12C328128ADBD4600829004 /* AboutGame.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,8 +281,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -306,8 +310,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

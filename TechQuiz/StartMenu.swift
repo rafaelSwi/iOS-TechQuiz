@@ -18,23 +18,33 @@ struct StartMenu: View {
                 Image("TECHQUIZ_LOGO")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 162,height: 140)
-                    .offset(x: 0, y: -300)
+                    .frame(width: 142,height: 120)
+                    .offset(x: -0, y: -278)
                 
-                NavigationLink (destination: ContentView()) {
+                VStack {
                     
-                    Text("Start Game")
-                        .font(.largeTitle)
                     
+                    NavigationLink (destination: ContentView()) {
+                        
+                        Text("Start Game")
+                            .font(.largeTitle)
+                        
+                    }.padding()
+                    
+                    NavigationLink (destination: AboutGame()) {
+                        
+                        Text("About")
+                            .font(.largeTitle)
+                        
+                    }.padding()
                 }
                 
-                
-            } .navigationBarTitle("Main Menu", displayMode: .inline)
+            }
             
             
             
             
-        }
+        } .navigationBarBackButtonHidden(true)
         
         
         
